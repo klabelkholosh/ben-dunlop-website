@@ -30,7 +30,9 @@ class MainScreen extends Component {
       book2Text: [
         `PORTFOLIO`,
         `Bitcoin Weekly Sentimentalizer. See how Twitter felt about Bitcoin in`,
-        ` the last 7 days! https://bitcoin-weekly-sentiment.app.com/`,
+        ` the last 7 days! https://bitcoin-weekly-sentiment.web.app/`,
+        `I did 6clocks, a Web3-enabled NFT site, as well as the actual NFT art/design etc.`,
+        `as well as the Solidity Ethereum smart contract: https://www.6clocks.wtf/`,
         `There's the site you're on! It should be both full-page and mobile`,
         ` friendly, it's mostly React and Adobe Illustrator.`,
         `Here's something I did for someone, a more traditional site:`,
@@ -117,7 +119,9 @@ class MainScreen extends Component {
         />
         {switchBook === 'default' && <TextArea liText={defaultText} />}
         {switchBook === 'book1' && <TextArea liText={book1Text} />}
-        {switchBook === 'book2' && <TextArea liText={book2Text} />}
+        {switchBook === 'book2' && (
+          <TextArea liText={book2Text} fontSize={'11'} />
+        )}
         {switchBook === 'book3' && <TextArea liText={book3Text} />}
       </div>
     );
