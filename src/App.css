@@ -1,38 +1,429 @@
-.App {
-  text-align: center;
+/* ------------------------------------------------------------------------------------------------------ */
+/* the more global-ey styles */
+/* ------------------------------------------------------------------------------------------------------ */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, SegoeUI, Roboto, Oxygen-Sans,
+    Ubuntu, Cantarell, HelveticaNeue, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+ul {
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: #d0021b;
+}
+
+/* ------------------------------------------------------------------------------------------------------ */
+/* the main container style */
+/* ------------------------------------------------------------------------------------------------------ */
+.appDiv {
+  /* text-align: left; */
+  display: flex;
+  flex-direction: row;
+}
+
+/* when screen shrinks below 760, make menu a bit more mobile-friendly */
+@media screen and (max-width: 768px) {
+  .appDiv {
+    /* text-align: left; */
+    display: flex;
+    flex-direction: column;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+/* ------------------------------------------------------------------------------------------------------ */
+/* MainMenu (meaning, the right hand pane...) style */
+/* ------------------------------------------------------------------------------------------------------ */
+
+.mainMenuDiv {
+  flex: 3;
+  height: 100vh;
+  position: relative;
+
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.bookcase_scene {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
-@keyframes App-logo-spin {
+.bookcase_scene--initial {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: dash 1s linear forwards;
+}
+
+.cBookStatic {
+  pointer-events: all;
+}
+
+.cBookStatic:hover {
+  animation: pulloutBook 0.1s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.lazyRobot {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: dash 2s linear forwards;
+}
+
+.leaningRobotAndBird {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: dash 2s linear forwards;
+}
+
+.movedPotPlant {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: dash 2s linear forwards;
+}
+
+.yellowWindowLines {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: dash 0.2s linear forwards;
+}
+
+/* when screen shrinks below 760, make menu a bit more mobile-friendly */
+@media screen and (max-width: 768px) {
+  .bookcase_scene {
+    position: relative;
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    animation: dash 1s linear forwards;
+  }
+
+  .bookcase_scene--initial {
+    position: relative;
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    animation: dash 1s linear forwards;
+  }
+}
+
+/* move those lines away! */
+.shoveRight {
+  animation: shoveRight 0.2s ease-out forwards;
+}
+
+/* move those lines away! */
+.shoveLeft {
+  animation: shoveLeft 0.2s ease-out forwards;
+}
+
+/* move those lines away! */
+.shoveUp {
+  animation: shoveUp 0.2s ease-out forwards;
+}
+
+@keyframes shoveLeft {
+  to {
+    opacity: 0;
+    transform: translate3d(-100px, 0, 0);
+  }
+}
+
+@keyframes shoveRight {
+  to {
+    opacity: 0;
+    transform: translate3d(100px, 0, 0);
+  }
+}
+
+@keyframes shoveUp {
+  to {
+    opacity: 0;
+    transform: translate3d(0, -200px, 0);
+  }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* get rid of wall lines when bookcase moves */
+@keyframes removeLines {
+  to {
+    opacity: 0;
+    stroke-dashoffset: 2000;
+    transform: translate(-30vw, 0px);
+  }
+}
+
+/* animation which should move bookcase somewhere to middle.. */
+@keyframes centerBkcase {
+  to {
+    transform: translate(-30vw, 0px);
+  }
+}
+
+/* lets fade out some stuff */
+@keyframes fadeOut {
   from {
-    transform: rotate(0deg);
+    transform: translate(-30vw, 0px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 0;
+    transform: translate(-30vw, 0px);
   }
+}
+
+@keyframes pulloutBook {
+  25% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(-2px, 0, 0);
+  }
+
+  75% {
+    transform: translate3d(-3px, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-4px, 0, 0);
+  }
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.2, 1.2);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+/* ------------------------------------------------------------------------------------------------------ */
+/* TextArea style */
+/* ------------------------------------------------------------------------------------------------------ */
+
+.textArea {
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  /* transform: translate(-50%, -50%); */
+  font-size: 20px;
+  margin: 0px 20px 20px 20px;
+  /*
+    font-size:2vw;
+    font-size-adjust:auto;
+   */
+  font-weight: 200;
+  pointer-events: none;
+  text-shadow: 2px 8px 10px #ffffff, 0px -5px 35px #ffffff;
+  /* background-color: white; */
+
+  -webkit-transform: skew(0deg, -30deg);
+  -moz-transform: skew(0deg, -30deg);
+  -o-transform: skew(0deg, -30deg);
+  -ms-transform: skew(0deg, -30deg);
+  transform: skew(0deg, -30deg);
+  text-shadow: 0 0 3px white;
+
+  z-index: 50;
+}
+
+/* when screen shrinks below 760, make menu a bit more mobile-friendly */
+@media screen and (max-width: 768px) {
+  .textArea {
+    position: relative;
+    text-align: center;
+    top: 0px;
+    left: 0px;
+    margin: 0px 20px 20px 20px;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+    font-size: 30px;
+
+    -webkit-transform: skew(0deg, 30deg);
+    -moz-transform: skew(0deg, 30deg);
+    -o-transform: skew(0deg, 30deg);
+    -ms-transform: skew(0deg, 30deg);
+    transform: skew(0deg, 30deg);
+    text-shadow: 0 0 3px white;
+  }
+}
+
+.textArea h1 {
+  font-size: 55px;
+  font-weight: 100;
+}
+
+.textArea li {
+  margin-bottom: 20px;
+  animation: fadeIn 0.2s linear forwards;
+}
+
+.textArea li a {
+  pointer-events: all;
+}
+
+/* lets fade in some stuff */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ------------------------------------------------------------------------------------------------------ */
+/* NavBar (BD Logo containing!) style */
+/* ------------------------------------------------------------------------------------------------------ */
+
+.navBar {
+  background: #2865a8;
+  height: 100%;
+}
+
+.scroll-prompt {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  z-index: 100;
+  transition: 1s opacity ease-out;
+  visibility: hidden;
+}
+
+/* when screen shrinks below 760, make menu a bit more mobile-friendly */
+@media screen and (max-width: 768px) {
+  .scroll-prompt {
+    visibility: visible;
+  }
+}
+
+.scroll-prompt .scroll-prompt-shape {
+  position: relative;
+  animation: slidedown 1.5s infinite;
+}
+
+.scroll-prompt .scroll-prompt-shape:before,
+.scroll-prompt .scroll-prompt-shape:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 3em;
+  height: 0.5em;
+  top: 0;
+  left: 0;
+  background: #fff;
+  border-radius: 0 0.25em 0.25em 0;
+  transform-origin: bottom, left;
+}
+
+.scroll-prompt .scroll-prompt-shape:before {
+  transform: scaleX(-1) rotate(-45deg) translate(20px, 20px);
+}
+.scroll-prompt .scroll-prompt-shape:after {
+  transform: rotate(-45deg);
+}
+
+@keyframes slidedown {
+  0% {
+    opacity: 0;
+  }
+  55% {
+    opacity: 1;
+    transform: translate(0, 80px);
+  }
+  90% {
+    opacity: 0;
+    transform: translate(0, 80px);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ------------------------------------------------------------------------------------------------------ */
+/* SVG bd_logo style */
+/* ------------------------------------------------------------------------------------------------------ */
+
+.logoDiv {
+  flex: 1;
+}
+
+.logoSvg {
+}
+
+/* when screen shrinks below 760, make menu a bit more mobile-friendly */
+@media screen and (max-width: 768px) {
+  .logoSvg {
+    width: 100vw;
+  }
+}
+
+/* rectangle */
+.cls-1 {
+  fill: #2364aa;
+  opacity: 1;
+}
+/* D column */
+.cls-2 {
+  fill: #ea7317;
+  opacity: 1;
+}
+/* D butt */
+.cls-3 {
+  fill: #fec601;
+  opacity: 1;
+}
+/* B column */
+.cls-5 {
+  fill: #3da5d9;
+  opacity: 1;
+}
+/* B butt */
+.cls-6 {
+  fill: #73bfb8;
+  opacity: 1;
+}
+
+/* unessentials, kept for reference */
+.cls-4,
+.cls-7 {
+  fill: none;
+  stroke: #000;
+  stroke-miterlimit: 10;
+}
+.cls-4 {
+  stroke-width: 0.25px;
+}
+
+/* ------------------------------------------------------------------------------------------------------ */
+
+.input {
+  width: 100px;
+  transition: width 0.35s linear;
+}
+
+.input-focussed {
+  width: 300px;
 }

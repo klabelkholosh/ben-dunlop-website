@@ -1,0 +1,22 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 98 178">
+	<defs>
+		<style>.cls-1{fill:#2364aa;}.cls-2{fill:#ea7317;}.cls-3{fill:#fec601;}.cls-4,.cls-7{fill:none;stroke:#000;stroke-miterlimit:10;}.cls-4{stroke-width:0.25px;}.cls-5{fill:#3da5d9;}.cls-6{fill:#73bfb8;}</style>
+	</defs>
+	<title>bd_logo</title>
+	<rect class="cls-1" width="98" height="178"/>
+	<text x="-1.5" y="-1.5"></text>
+	<!--// D column //-->
+	<path class="cls-2" d="M65,104l18,15V41L65,21V72" transform="translate(-1.5 -1.5)"/>
+	<!--// D butt //-->
+	<path class="cls-3" d="M65,72c-24-28-34,32,0,32" transform="translate(-1.5 -1.5)"/> 
+	<!--// <path class="cls-4" d="M78,158" transform="translate(-1.5 -1.5)"/> //-->
+	<!--// B column //-->
+	<path class="cls-5" d="M36.5,151l-18,15V41l18-20v98" transform="translate(-1.5 -1.5)"/>
+	<!--// B butt //-->
+	<path class="cls-6" d="M36.5,119c24-28,34,32,0,32" transform="translate(-1.5 -1.5)"/>
+	<!--//
+	<path class="cls-7" d="M52.5,21" transform="translate(-1.5 -1.5)"/>
+	<path class="cls-7" d="M52.5,40.5" transform="translate(-1.5 -1.5)"/>
+	<path class="cls-7" d="M65,68.5" transform="translate(-1.5 -1.5)"/>
+	//-->
+</svg>

@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+/* React Components */
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+/* My Components */
+import NavBar from './NavBar';
+import MainScreen from './MainScreen';
+
+class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      showScroller: false,
+      logoHeight: '100vh',
+    };
+  }
+
+  //function that either shows or hides the scroller!
+  switchScroller = () => {
+    let newScrollState = !this.state.showScroller;
+    this.setState({
+      showScroller: newScrollState,
+    });
+  };
+
+  //every 3 seconds, fire the scroller switch
+  componentDidMount() {
+    setInterval(this.switchScroller, 3000);
+  }
+
+  render() {
+    let { showScroller, logoHeight } = this.state;
+
+    return (
+      <div className="appDiv" id="appDiv">
+        <NavBar
+          id="NavBar"
+          showScroller={showScroller}
+          logoHeight={logoHeight}
+        />
+        <MainScreen id="MainScreen" />
+      </div>
+    );
+  }
 }
 
 export default App;
