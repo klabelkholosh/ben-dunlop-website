@@ -1,6 +1,34 @@
 /* React Components */
 import React, { Component } from 'react';
+import Book from './Book';
 
+function Books({ selectFunc, fillArr }) {
+  return (
+    <>
+      <Book
+        number="book1"
+        clicked={() => selectFunc('book1')}
+        fill={fillArr[0]}
+        xoffset={0}
+        yoffset={0}
+      />
+      <Book
+        number="book2"
+        clicked={() => selectFunc('book2')}
+        fill={fillArr[1]}
+        xoffset={47.49}
+        yoffset={26.67}
+      />
+      <Book
+        number="book3"
+        clicked={() => selectFunc('book3')}
+        fill={fillArr[2]}
+        xoffset={47.49 * 2}
+        yoffset={26.67 * 2}
+      />
+    </>
+  );
+}
 export class DefaultSvg extends Component {
   constructor(props) {
     super(props);
@@ -51,91 +79,7 @@ export class DefaultSvg extends Component {
             preserveAspectRatio="xMidYMid slice"
             className="bookcase_scene--initial"
           >
-            {/* className={cBk} */}
-            <g
-              id="book1"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book1')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="766.32 511.13 766.32 462.62 777.99 468.73 777.21 515.95 766.32 511.13"
-                  fill={spinefill[0]}
-                />
-                <polygon
-                  points="766.32 462.62 787.71 450.62 787.71 454.37 795.87 451.01 769.32 464.62"
-                  fill={spinefill[0]}
-                />
-                <polygon
-                  points="778.32 468.62 787.71 465.62 787.71 454.37 795.87 451.01 769.32 464.62"
-                  fill={`#FFFFFF`}
-                />
-                <polygon
-                  points="777.21 515.95 799.05 503.45 799.05 496.12 799.05 457.29  777.99 468.73"
-                  fill={spinefill[0]}
-                />
-              </g>
-              <line
-                x1="787.71"
-                y1="454.37"
-                x2="770.93"
-                y2="463.75"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
-            <g
-              id="book3"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book3')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="860.11 563.49 860.11 514.98 871.78 521.09 871 568.31 860.11 563.49"
-                  fill={spinefill[2]}
-                />
-                <polyline points="860.11 514.98 881.5 502.98 881.5 506.73 889.66 511.38" />
-                <line x1="871.78" y1="521.09" x2="892.84" y2="509.65" />
-                <polyline points="871 568.31 892.84 555.81 892.84 548.48 892.84 509.65" />
-              </g>
-              <line
-                x1="881.5"
-                y1="506.73"
-                x2="864.72"
-                y2="516.11"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
-            <g
-              id="book2"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book2')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="812.62 536.82 812.62 488.31 824.29 494.42 823.5 541.65 812.62 536.82"
-                  fill={spinefill[1]}
-                />
-                <polyline points="812.62 488.31 834.01 476.31 834.01 480.07 842.17 484.71" />
-                <line x1="824.29" y1="494.42" x2="845.35" y2="482.99" />
-                <polyline points="823.5 541.65 845.35 529.15 845.35 521.81 845.35 482.99" />
-              </g>
-              <line
-                x1="834.01"
-                y1="480.07"
-                x2="817.23"
-                y2="489.45"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
+            {<Books selectFunc={onSelect} fillArr={spinefill} />}
 
             {/* <g id='whiteFill' fill='#fff' className={showBook ? fadeOut : cBkCase}> */}
             <g id="whiteFill" fill="#fff">
@@ -341,82 +285,7 @@ export class DefaultSvg extends Component {
             preserveAspectRatio="xMidYMid slice"
             className="bookcase_scene--initial"
           >
-            {/* className={cBk} */}
-            <g
-              id="book1"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book1')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="766.32 511.13 766.32 462.62 777.99 468.73 777.21 515.95 766.32 511.13"
-                  fill={spinefill[0]}
-                />
-                <polyline points="766.32 462.62 787.71 450.62 787.71 454.37 795.87 459.01" />
-                <line x1="777.99" y1="468.73" x2="799.05" y2="457.29" />
-                <polyline points="777.21 515.95 799.05 503.45 799.05 496.12 799.05 457.29" />
-              </g>
-              <line
-                x1="787.71"
-                y1="454.37"
-                x2="770.93"
-                y2="463.75"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
-            <g
-              id="book3"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book3')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="860.11 563.49 860.11 514.98 871.78 521.09 871 568.31 860.11 563.49"
-                  fill={spinefill[2]}
-                />
-                <polyline points="860.11 514.98 881.5 502.98 881.5 506.73 889.66 511.38" />
-                <line x1="871.78" y1="521.09" x2="892.84" y2="509.65" />
-                <polyline points="871 568.31 892.84 555.81 892.84 548.48 892.84 509.65" />
-              </g>
-              <line
-                x1="881.5"
-                y1="506.73"
-                x2="864.72"
-                y2="516.11"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
-            <g
-              id="book2"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book2')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="812.62 536.82 812.62 488.31 824.29 494.42 823.5 541.65 812.62 536.82"
-                  fill={spinefill[1]}
-                />
-                <polyline points="812.62 488.31 834.01 476.31 834.01 480.07 842.17 484.71" />
-                <line x1="824.29" y1="494.42" x2="845.35" y2="482.99" />
-                <polyline points="823.5 541.65 845.35 529.15 845.35 521.81 845.35 482.99" />
-              </g>
-              <line
-                x1="834.01"
-                y1="480.07"
-                x2="817.23"
-                y2="489.45"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
+            {<Books selectFunc={onSelect} fillArr={spinefill} />}
 
             {/* <g id='whiteFill' fill='#fff' className={showBook ? fadeOut : cBkCase}> */}
             <g id="whiteFill" fill="#fff">
@@ -604,82 +473,7 @@ export class BlueBookSvg extends Component {
             preserveAspectRatio="xMidYMid"
             className="bookcase_scene"
           >
-            {/* className={cBk} */}
-            <g
-              id="book1"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book1')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="766.32 511.13 766.32 462.62 777.99 468.73 777.21 515.95 766.32 511.13"
-                  fill={spinefill[0]}
-                />
-                <polyline points="766.32 462.62 787.71 450.62 787.71 454.37 795.87 459.01" />
-                <line x1="777.99" y1="468.73" x2="799.05" y2="457.29" />
-                <polyline points="777.21 515.95 799.05 503.45 799.05 496.12 799.05 457.29" />
-              </g>
-              <line
-                x1="787.71"
-                y1="454.37"
-                x2="770.93"
-                y2="463.75"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
-            <g
-              id="book3"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book3')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="860.11 563.49 860.11 514.98 871.78 521.09 871 568.31 860.11 563.49"
-                  fill={spinefill[2]}
-                />
-                <polyline points="860.11 514.98 881.5 502.98 881.5 506.73 889.66 511.38" />
-                <line x1="871.78" y1="521.09" x2="892.84" y2="509.65" />
-                <polyline points="871 568.31 892.84 555.81 892.84 548.48 892.84 509.65" />
-              </g>
-              <line
-                x1="881.5"
-                y1="506.73"
-                x2="864.72"
-                y2="516.11"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
-            <g
-              id="book2"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book2')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="812.62 536.82 812.62 488.31 824.29 494.42 823.5 541.65 812.62 536.82"
-                  fill={spinefill[1]}
-                />
-                <polyline points="812.62 488.31 834.01 476.31 834.01 480.07 842.17 484.71" />
-                <line x1="824.29" y1="494.42" x2="845.35" y2="482.99" />
-                <polyline points="823.5 541.65 845.35 529.15 845.35 521.81 845.35 482.99" />
-              </g>
-              <line
-                x1="834.01"
-                y1="480.07"
-                x2="817.23"
-                y2="489.45"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
+            {<Books selectFunc={onSelect} fillArr={spinefill} />}
 
             {/* <g id='whiteFill' fill='#fff' className={showBook ? fadeOut : cBkCase}> */}
             <g id="whiteFill" fill="#fff">
@@ -1235,82 +1029,7 @@ export class BlueBookSvg extends Component {
             preserveAspectRatio="xMidYMid"
             className="bookcase_scene"
           >
-            {/* className={cBk} */}
-            <g
-              id="book1"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book1')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="766.32 511.13 766.32 462.62 777.99 468.73 777.21 515.95 766.32 511.13"
-                  fill={spinefill[0]}
-                />
-                <polyline points="766.32 462.62 787.71 450.62 787.71 454.37 795.87 459.01" />
-                <line x1="777.99" y1="468.73" x2="799.05" y2="457.29" />
-                <polyline points="777.21 515.95 799.05 503.45 799.05 496.12 799.05 457.29" />
-              </g>
-              <line
-                x1="787.71"
-                y1="454.37"
-                x2="770.93"
-                y2="463.75"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
-            <g
-              id="book3"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book3')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="860.11 563.49 860.11 514.98 871.78 521.09 871 568.31 860.11 563.49"
-                  fill={spinefill[2]}
-                />
-                <polyline points="860.11 514.98 881.5 502.98 881.5 506.73 889.66 511.38" />
-                <line x1="871.78" y1="521.09" x2="892.84" y2="509.65" />
-                <polyline points="871 568.31 892.84 555.81 892.84 548.48 892.84 509.65" />
-              </g>
-              <line
-                x1="881.5"
-                y1="506.73"
-                x2="864.72"
-                y2="516.11"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
-            <g
-              id="book2"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book2')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="812.62 536.82 812.62 488.31 824.29 494.42 823.5 541.65 812.62 536.82"
-                  fill={spinefill[1]}
-                />
-                <polyline points="812.62 488.31 834.01 476.31 834.01 480.07 842.17 484.71" />
-                <line x1="824.29" y1="494.42" x2="845.35" y2="482.99" />
-                <polyline points="823.5 541.65 845.35 529.15 845.35 521.81 845.35 482.99" />
-              </g>
-              <line
-                x1="834.01"
-                y1="480.07"
-                x2="817.23"
-                y2="489.45"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
+            {<Books selectFunc={onSelect} fillArr={spinefill} />}
 
             {/* <g id='whiteFill' fill='#fff' className={showBook ? fadeOut : cBkCase}> */}
             <g id="whiteFill" fill="#fff">
@@ -1896,82 +1615,7 @@ export class YellowBookSvg extends Component {
             preserveAspectRatio="xMidYMid"
             className="bookcase_scene"
           >
-            {/* className={cBk} */}
-            <g
-              id="book1"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book1')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="766.32 511.13 766.32 462.62 777.99 468.73 777.21 515.95 766.32 511.13"
-                  fill={spinefill[0]}
-                />
-                <polyline points="766.32 462.62 787.71 450.62 787.71 454.37 795.87 459.01" />
-                <line x1="777.99" y1="468.73" x2="799.05" y2="457.29" />
-                <polyline points="777.21 515.95 799.05 503.45 799.05 496.12 799.05 457.29" />
-              </g>
-              <line
-                x1="787.71"
-                y1="454.37"
-                x2="770.93"
-                y2="463.75"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
-            <g
-              id="book3"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book3')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="860.11 563.49 860.11 514.98 871.78 521.09 871 568.31 860.11 563.49"
-                  fill={spinefill[2]}
-                />
-                <polyline points="860.11 514.98 881.5 502.98 881.5 506.73 889.66 511.38" />
-                <line x1="871.78" y1="521.09" x2="892.84" y2="509.65" />
-                <polyline points="871 568.31 892.84 555.81 892.84 548.48 892.84 509.65" />
-              </g>
-              <line
-                x1="881.5"
-                y1="506.73"
-                x2="864.72"
-                y2="516.11"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
-            <g
-              id="book2"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book2')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="812.62 536.82 812.62 488.31 824.29 494.42 823.5 541.65 812.62 536.82"
-                  fill={spinefill[1]}
-                />
-                <polyline points="812.62 488.31 834.01 476.31 834.01 480.07 842.17 484.71" />
-                <line x1="824.29" y1="494.42" x2="845.35" y2="482.99" />
-                <polyline points="823.5 541.65 845.35 529.15 845.35 521.81 845.35 482.99" />
-              </g>
-              <line
-                x1="834.01"
-                y1="480.07"
-                x2="817.23"
-                y2="489.45"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
+            {<Books selectFunc={onSelect} fillArr={spinefill} />}
 
             {/* <g id='whiteFill' fill='#fff' className={showBook ? fadeOut : cBkCase}> */}
             <g id="whiteFill" fill="#fff">
@@ -2480,82 +2124,7 @@ export class YellowBookSvg extends Component {
             preserveAspectRatio="xMidYMid slice"
             className="bookcase_scene--initial"
           >
-            {/* className={cBk} */}
-            <g
-              id="book1"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book1')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="766.32 511.13 766.32 462.62 777.99 468.73 777.21 515.95 766.32 511.13"
-                  fill={spinefill[0]}
-                />
-                <polyline points="766.32 462.62 787.71 450.62 787.71 454.37 795.87 459.01" />
-                <line x1="777.99" y1="468.73" x2="799.05" y2="457.29" />
-                <polyline points="777.21 515.95 799.05 503.45 799.05 496.12 799.05 457.29" />
-              </g>
-              <line
-                x1="787.71"
-                y1="454.37"
-                x2="770.93"
-                y2="463.75"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
-            <g
-              id="book3"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book3')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="860.11 563.49 860.11 514.98 871.78 521.09 871 568.31 860.11 563.49"
-                  fill={spinefill[2]}
-                />
-                <polyline points="860.11 514.98 881.5 502.98 881.5 506.73 889.66 511.38" />
-                <line x1="871.78" y1="521.09" x2="892.84" y2="509.65" />
-                <polyline points="871 568.31 892.84 555.81 892.84 548.48 892.84 509.65" />
-              </g>
-              <line
-                x1="881.5"
-                y1="506.73"
-                x2="864.72"
-                y2="516.11"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
-            <g
-              id="book2"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book2')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="812.62 536.82 812.62 488.31 824.29 494.42 823.5 541.65 812.62 536.82"
-                  fill={spinefill[1]}
-                />
-                <polyline points="812.62 488.31 834.01 476.31 834.01 480.07 842.17 484.71" />
-                <line x1="824.29" y1="494.42" x2="845.35" y2="482.99" />
-                <polyline points="823.5 541.65 845.35 529.15 845.35 521.81 845.35 482.99" />
-              </g>
-              <line
-                x1="834.01"
-                y1="480.07"
-                x2="817.23"
-                y2="489.45"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
+            {<Books selectFunc={onSelect} fillArr={spinefill} />}
 
             {/* <g id='whiteFill' fill='#fff' className={showBook ? fadeOut : cBkCase}> */}
             <g id="whiteFill" fill="#fff">
@@ -3056,82 +2625,7 @@ export class OrangeBookSvg extends Component {
             preserveAspectRatio="xMidYMid"
             className="bookcase_scene"
           >
-            {/* className={cBk} */}
-            <g
-              id="book1"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book1')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="766.32 511.13 766.32 462.62 777.99 468.73 777.21 515.95 766.32 511.13"
-                  fill={spinefill[0]}
-                />
-                <polyline points="766.32 462.62 787.71 450.62 787.71 454.37 795.87 459.01" />
-                <line x1="777.99" y1="468.73" x2="799.05" y2="457.29" />
-                <polyline points="777.21 515.95 799.05 503.45 799.05 496.12 799.05 457.29" />
-              </g>
-              <line
-                x1="787.71"
-                y1="454.37"
-                x2="770.93"
-                y2="463.75"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
-            <g
-              id="book3"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book3')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="860.11 563.49 860.11 514.98 871.78 521.09 871 568.31 860.11 563.49"
-                  fill={spinefill[2]}
-                />
-                <polyline points="860.11 514.98 881.5 502.98 881.5 506.73 889.66 511.38" />
-                <line x1="871.78" y1="521.09" x2="892.84" y2="509.65" />
-                <polyline points="871 568.31 892.84 555.81 892.84 548.48 892.84 509.65" />
-              </g>
-              <line
-                x1="881.5"
-                y1="506.73"
-                x2="864.72"
-                y2="516.11"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
-            <g
-              id="book2"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book2')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="812.62 536.82 812.62 488.31 824.29 494.42 823.5 541.65 812.62 536.82"
-                  fill={spinefill[1]}
-                />
-                <polyline points="812.62 488.31 834.01 476.31 834.01 480.07 842.17 484.71" />
-                <line x1="824.29" y1="494.42" x2="845.35" y2="482.99" />
-                <polyline points="823.5 541.65 845.35 529.15 845.35 521.81 845.35 482.99" />
-              </g>
-              <line
-                x1="834.01"
-                y1="480.07"
-                x2="817.23"
-                y2="489.45"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
+            {<Books selectFunc={onSelect} fillArr={spinefill} />}
 
             {/* <g id='whiteFill' fill='#fff' className={showBook ? fadeOut : cBkCase}> */}
             <g id="whiteFill" fill="#fff">
@@ -3343,82 +2837,7 @@ export class OrangeBookSvg extends Component {
             preserveAspectRatio="xMidYMid slice"
             className="bookcase_scene--initial"
           >
-            {/* className={cBk} */}
-            <g
-              id="book1"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book1')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="766.32 511.13 766.32 462.62 777.99 468.73 777.21 515.95 766.32 511.13"
-                  fill={spinefill[0]}
-                />
-                <polyline points="766.32 462.62 787.71 450.62 787.71 454.37 795.87 459.01" />
-                <line x1="777.99" y1="468.73" x2="799.05" y2="457.29" />
-                <polyline points="777.21 515.95 799.05 503.45 799.05 496.12 799.05 457.29" />
-              </g>
-              <line
-                x1="787.71"
-                y1="454.37"
-                x2="770.93"
-                y2="463.75"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
-            <g
-              id="book3"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book3')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="860.11 563.49 860.11 514.98 871.78 521.09 871 568.31 860.11 563.49"
-                  fill={spinefill[2]}
-                />
-                <polyline points="860.11 514.98 881.5 502.98 881.5 506.73 889.66 511.38" />
-                <line x1="871.78" y1="521.09" x2="892.84" y2="509.65" />
-                <polyline points="871 568.31 892.84 555.81 892.84 548.48 892.84 509.65" />
-              </g>
-              <line
-                x1="881.5"
-                y1="506.73"
-                x2="864.72"
-                y2="516.11"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
-            <g
-              id="book2"
-              stroke="#000"
-              strokeMiterlimit="10"
-              className="cBookStatic"
-              onClick={() => onSelect('book2')}
-            >
-              <g fill="none" strokeWidth="0.913">
-                <polygon
-                  points="812.62 536.82 812.62 488.31 824.29 494.42 823.5 541.65 812.62 536.82"
-                  fill={spinefill[1]}
-                />
-                <polyline points="812.62 488.31 834.01 476.31 834.01 480.07 842.17 484.71" />
-                <line x1="824.29" y1="494.42" x2="845.35" y2="482.99" />
-                <polyline points="823.5 541.65 845.35 529.15 845.35 521.81 845.35 482.99" />
-              </g>
-              <line
-                x1="834.01"
-                y1="480.07"
-                x2="817.23"
-                y2="489.45"
-                fill="#fff"
-                strokeWidth="0.75"
-              />
-            </g>
+            {<Books selectFunc={onSelect} fillArr={spinefill} />}
 
             {/* <g id='whiteFill' fill='#fff' className={showBook ? fadeOut : cBkCase}> */}
             <g id="whiteFill" fill="#fff">
