@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 /* My Components */
 import SVGBookcase from './SVGBookcase';
 import TextArea from './TextArea';
-
 class MainScreen extends Component {
   constructor(props) {
     super(props);
@@ -27,25 +26,52 @@ class MainScreen extends Component {
         `Node.js is pretty cool too.`,
         `My previous experience is mostly PHP/PostgreSQL.`,
       ],
-      book2Text: [
-        `PORTFOLIO`,
-        `\u2730 NFT VIZ. A React-based image gallery, that loads NFTs from an Ethereum address.`,
-        `https://nft-list-seven.vercel.app/`,
-        `\u2730 Bitcoin Weekly Sentimentalizer. See how Twitter felt about Bitcoin in`,
-        ` the last 7 days! https://bitcoin-weekly-sentiment.web.app/`,
-        `\u2730 I did 6clocks, a Web3-enabled NFT site, as well as the actual NFT art/design etc.`,
-        `as well as the Solidity Ethereum smart contract: https://www.6clocks.wtf/`,
-        `\u2730 Here's a Gatsby/GraphQL/Contentful single-page site I did for a payment gateway company`,
-        `https://greenpay-gatsby-frontend.vercel.app/`,
-        `\u2730 There's the site you're on! It should be both full-page and mobile`,
-        ` friendly, it's mostly React and Adobe Illustrator.`,
-        `\u2730 Here's something I did for someone, a more traditional site:`,
-        `https://printellect-83cd7.firebaseapp.com`,
-        `\u2730 Here's a weather app I made in React, using OpenWeatherMap's`,
-        ` API: https://weather-app-89a1b.firebaseapp.com/`,
-        //`There's also infocus.co.za, it's a fully fledged web-based modular accounting package, done in PHP, MySQL and JQuery. A little older, but still works! Let me know if you need login details.`,
-        `More coming soon!`,
-      ],
+      book2BookBody: {
+        title: `PORTFOLIO`,
+        pages: [
+          {
+            page_title: 'NFT VIZ',
+            desc: 'A React-based image gallery, that loads NFTs from an Ethereum address.',
+            link: `https://nft-list-seven.vercel.app/`,
+          },
+          {
+            page_title: 'Bitcoin Weekly Sentimentalizer',
+            desc: 'See how Twitter felt about Bitcoin in the last 7 days!',
+            link: `https://bitcoin-weekly-sentiment.web.app/`,
+          },
+          {
+            page_title: '6clocks',
+            desc: 'This is a Web3-enabled NFT site I did, as well as the actual NFT art/design etc. and the Solidity Ethereum smart contract.',
+            link: `https://www.6clocks.wtf/`,
+          },
+          {
+            page_title: 'GreenPay',
+            desc: `Here's a Gatsby/GraphQL/Contentful single-page site I did for a payment gateway company.`,
+            link: `https://greenpay-gatsby-frontend.vercel.app/`,
+          },
+          {
+            page_title: 'This site..',
+            desc: `There's the site you're on! It should be both full-page and mobile friendly, it's mostly React and Adobe Illustrator.`,
+            link: null,
+          },
+          {
+            page_title: 'Printellect',
+            desc: `Quick little info-gathering form site, done in React.`,
+            link: `https://printellect-83cd7.firebaseapp.com`,
+          },
+          {
+            page_title: 'Weather App',
+            desc: `Here's a weather app I made in React, using OpenWeatherMap's API.`,
+            link: `https://weather-app-89a1b.firebaseapp.com/`,
+          },
+          {
+            page_title: null,
+            desc: `More coming soon!`,
+            link: null,
+          },
+        ],
+        //`\u2730`
+      },
       book3Text: [
         `CONTACT`,
         `Drop me a line!`,
@@ -100,7 +126,7 @@ class MainScreen extends Component {
       switchBook,
       defaultText,
       book1Text,
-      book2Text,
+      book2BookBody,
       book3Text,
     } = this.state;
 
@@ -124,7 +150,7 @@ class MainScreen extends Component {
         {switchBook === 'default' && <TextArea liText={defaultText} />}
         {switchBook === 'book1' && <TextArea liText={book1Text} />}
         {switchBook === 'book2' && (
-          <TextArea liText={book2Text} fontSize={'11'} />
+          <TextArea bookBody={book2BookBody} fontSize={'11'} bookPopup={true} />
         )}
         {switchBook === 'book3' && <TextArea liText={book3Text} />}
       </div>

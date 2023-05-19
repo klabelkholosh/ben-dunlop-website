@@ -1,11 +1,26 @@
 /* ------------------------------------------------------------------------------------------------------ */
+/* variables - used in BookCSS mostly
+/* ------------------------------------------------------------------------------------------------------ */
+
+$text-font: -apple-system, BlinkMacSystemFont, SegoeUI, Roboto, Oxygen-Sans,
+  Ubuntu, Cantarell, HelveticaNeue, sans-serif;
+$h1-font: -apple-system, BlinkMacSystemFont, SegoeUI, Roboto, Oxygen-Sans,
+  Ubuntu, Cantarell, HelveticaNeue, sans-serif;
+$h2-font: -apple-system, BlinkMacSystemFont, SegoeUI, Roboto, Oxygen-Sans,
+  Ubuntu, Cantarell, HelveticaNeue, sans-serif;
+
+$book-h-ratio: 8.5;
+$book-w-ratio: 5.5;
+$book-size: 50px;
+$breakpoint-phone: 768px;
+
+/* ------------------------------------------------------------------------------------------------------ */
 /* the more global-ey styles */
 /* ------------------------------------------------------------------------------------------------------ */
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, SegoeUI, Roboto, Oxygen-Sans,
-    Ubuntu, Cantarell, HelveticaNeue, sans-serif;
+  font-family: $text-font;
 }
 
 ul {
@@ -32,7 +47,7 @@ a {
 }
 
 /* when screen shrinks below 760, make menu a bit more mobile-friendly */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: $breakpoint-phone) {
   .appDiv {
     /* text-align: left; */
     display: flex;
@@ -100,7 +115,7 @@ a {
 }
 
 /* when screen shrinks below 760, make menu a bit more mobile-friendly */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: $breakpoint-phone) {
   .bookcase_scene {
     position: relative;
     stroke-dasharray: 2000;
@@ -246,7 +261,7 @@ a {
 }
 
 /* when screen shrinks below 760, make menu a bit more mobile-friendly */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: $breakpoint-phone) {
   .textArea {
     position: relative;
     text-align: center;
@@ -292,6 +307,133 @@ a {
 }
 
 /* ------------------------------------------------------------------------------------------------------ */
+/* BookCSS styles - Author: Alina (https://codepen.io/lina994/pen/qBXGvby)
+/* ------------------------------------------------------------------------------------------------------ */
+
+%absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.book {
+  @extend %absolute-center;
+  width: $book-size * $book-w-ratio * 2;
+  height: $book-size * $book-h-ratio;
+
+  transform-style: preserve-3d;
+  animation: bookCSSPullout 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards;
+}
+
+/* animation which should move bookcase somewhere to middle.. */
+@keyframes bookCSSPullout {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: translate(-40vw, -20vw) rotatex(-40deg) rotatey(40deg) scale(1);
+  }
+}
+
+@media screen and (max-width: $breakpoint-phone) {
+  @keyframes bookCSSPullout {
+    from {
+      transform: scale(0.1);
+    }
+    to {
+      transform: translate(-50vw, 60vw) rotatex(-40deg) rotatey(40deg)
+        scale(0.75);
+    }
+  }
+}
+
+.page {
+  width: $book-size * $book-w-ratio;
+  height: $book-size * $book-h-ratio;
+  background: #eee;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: transform 0.3s;
+}
+
+@for $i from 1 through 100 {
+  .page:nth-child(#{$i}) {
+    h1 {
+      font-size: 35px;
+      font-weight: 120;
+    }
+
+    p {
+      font-size: 20px;
+      font-weight: 100;
+    }
+
+    @if $i % 2 == 1 {
+      padding: 5% 4% 4% 5%;
+      transform-origin: 0% 50%;
+      transform: translatez(-1px * $i);
+    } @else {
+      padding: 5% 5% 4% 4%;
+      transform-origin: 100% 50%;
+      transform: translatez(-1px * $i) scalex(-1) translatex(100%);
+    }
+
+    @if $i > 2 {
+      @if $i % 20 < 10 {
+        background: rgb(254, 198, 1);
+      } @else {
+        background: rgb(234, 115, 23);
+      }
+    } @else {
+      background: #3da5d9;
+    }
+  }
+
+  .left-side:nth-child(#{$i}) {
+    @if $i % 2 == 1 {
+      transform: translatez(1px * $i) rotatey(-180deg);
+    } @else {
+      transform: translatez(1px * $i)
+        scalex(-1)
+        translatex(100%)
+        rotatey(180deg);
+    }
+  }
+}
+
+.cover-front:nth-child(1) {
+  text-align: center;
+  background: linear-gradient(#e89e16, #facd29) 50% 50% / 80% 86% no-repeat,
+    linear-gradient(#e89e16, #fec601) 50% 50% / 90% 93% no-repeat,
+    linear-gradient(#fec601, #fec601) no-repeat;
+
+  h1 {
+    font-size: 55px;
+    font-weight: 120;
+  }
+}
+
+p {
+  margin-bottom: 4%;
+  font-family: $text-font;
+  font-size: 16px;
+}
+
+/*
+.page:nth-child(3) {
+  p {
+    &:first-of-type {
+      &:first-letter {
+        font-size: 32px;
+      }
+    }
+  }
+}
+*/
+
+/* ------------------------------------------------------------------------------------------------------ */
 /* NavBar (BD Logo containing!) style */
 /* ------------------------------------------------------------------------------------------------------ */
 
@@ -310,7 +452,7 @@ a {
 }
 
 /* when screen shrinks below 760, make menu a bit more mobile-friendly */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: $breakpoint-phone) {
   .scroll-prompt {
     visibility: visible;
   }
@@ -371,7 +513,7 @@ a {
 }
 
 /* when screen shrinks below 760, make menu a bit more mobile-friendly */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: $breakpoint-phone) {
   .logoSvg {
     width: 100vw;
   }

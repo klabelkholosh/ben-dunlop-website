@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import BookCSS from './BookCSS.jsx';
 
 /* 3rd-party Components */
 import Linkify from 'react-linkify';
@@ -8,11 +9,15 @@ import Linkify from 'react-linkify';
 //also uses Linkify to render any URLs as clickable. (would be nice if they opened in a new window..)
 class TextArea extends Component {
   render() {
-    let { liText, fontSize } = this.props;
+    let { liText, fontSize, bookPopup = false, bookBody = null } = this.props;
+
+    console.log('bookPopup:', bookPopup);
     const fSizeStyle = {
       fontSize: `${fontSize}px`,
     };
-    return (
+    return bookPopup ? (
+      <BookCSS bookBody={bookBody} />
+    ) : (
       <div className="textArea">
         <Linkify target="_blank">
           <ul>
@@ -35,6 +40,7 @@ class TextArea extends Component {
 TextArea.propTypes = {
   liText: PropTypes.array.isRequired,
   fontSize: PropTypes.string,
+  bookBody: PropTypes.object,
 };
 
 TextArea.defaultProps = {
