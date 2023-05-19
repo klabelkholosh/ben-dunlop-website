@@ -29,6 +29,8 @@ class MainScreen extends Component {
       ],
       book2Text: [
         `PORTFOLIO`,
+        `\u2730 NFT VIZ. A React-based image gallery, that loads NFTs from an Ethereum address.`,
+        `https://nft-list-seven.vercel.app/`,
         `\u2730 Bitcoin Weekly Sentimentalizer. See how Twitter felt about Bitcoin in`,
         ` the last 7 days! https://bitcoin-weekly-sentiment.web.app/`,
         `\u2730 I did 6clocks, a Web3-enabled NFT site, as well as the actual NFT art/design etc.`,
