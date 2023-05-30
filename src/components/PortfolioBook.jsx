@@ -1,4 +1,6 @@
 import React from 'react';
+import github_icon from '../images/github-mark.svg';
+import web_icon from '../images/web_link.svg';
 
 /* this component is the animated flipbook that holds the porfolio 'pages' */
 export default function PortfolioBook({ bookBody }) {
@@ -49,6 +51,7 @@ export default function PortfolioBook({ bookBody }) {
         ></span>
 
         {bookBody.pages.map((el, idx) => {
+          console.log('github_icon:', github_icon);
           return (
             <span
               className="page text-page"
@@ -57,10 +60,26 @@ export default function PortfolioBook({ bookBody }) {
             >
               <h1>{el.page_title}</h1>
               <p>{el.desc}</p>
-              <p>
-                <a href={el.link} target="_blank" rel="noreferrer">
-                  {el.link}
-                </a>
+              <p className="page-links">
+                {el.link && (
+                  <p>
+                    <a href={el.link} target="_blank" rel="noreferrer">
+                      <img src={web_icon} className="github_link" alt="Demo" />
+                    </a>
+                  </p>
+                )}
+
+                {el.github_link && (
+                  <p>
+                    <a href={el.github_link} target="_blank" rel="noreferrer">
+                      <img
+                        src={github_icon}
+                        className="github_link"
+                        alt="GitHub"
+                      />
+                    </a>
+                  </p>
+                )}
               </p>
             </span>
           );
