@@ -1,6 +1,7 @@
 import React from 'react';
 
-export default function BookCSS({ bookBody }) {
+/* this component is the animated flipbook that holds the porfolio 'pages' */
+export default function PortfolioBook({ bookBody }) {
   let [currentPage, setCurrentPage] = React.useState(1);
 
   const toggleClass = (e, toggleClassName) => {
@@ -32,7 +33,7 @@ export default function BookCSS({ bookBody }) {
 
   const rows = [];
   for (let i = 0; i < 40; i++) {
-    rows.push(<span className="page" key={i}></span>);
+    rows.push(<span className="page" key={`pfb-page-${i}`}></span>);
   }
 
   return (
@@ -52,11 +53,12 @@ export default function BookCSS({ bookBody }) {
             <span
               className="page text-page"
               onClick={(e) => movePage(e, idx + 3)}
+              key={`pfb-sp-${idx}`}
             >
               <h1>{el.page_title}</h1>
               <p>{el.desc}</p>
               <p>
-                <a href={el.link} target="_blank">
+                <a href={el.link} target="_blank" rel="noreferrer">
                   {el.link}
                 </a>
               </p>

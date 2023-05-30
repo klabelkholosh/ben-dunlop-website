@@ -307,7 +307,7 @@ a {
 }
 
 /* ------------------------------------------------------------------------------------------------------ */
-/* BookCSS styles - Author: Alina (https://codepen.io/lina994/pen/qBXGvby)
+/* BookCSS styles - Orig Author: Alina (https://codepen.io/lina994/pen/qBXGvby)
 /* ------------------------------------------------------------------------------------------------------ */
 
 %absolute-center {
@@ -420,18 +420,6 @@ p {
   font-family: $text-font;
   font-size: 16px;
 }
-
-/*
-.page:nth-child(3) {
-  p {
-    &:first-of-type {
-      &:first-letter {
-        font-size: 32px;
-      }
-    }
-  }
-}
-*/
 
 /* ------------------------------------------------------------------------------------------------------ */
 /* NavBar (BD Logo containing!) style */
