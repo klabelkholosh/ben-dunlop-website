@@ -29,11 +29,13 @@ export const BOOK_TEXT = [
           page_title: 'NFT VIZ',
           desc: 'A React-based image gallery, that loads NFTs from an Ethereum address.',
           link: `https://nft-list-seven.vercel.app/`,
+          github_link: `https://github.com/klabelkholosh/nft-list/`,
         },
         {
           page_title: 'Bitcoin Weekly Sentimentalizer',
           desc: 'See how Twitter felt about Bitcoin in the last 7 days!',
           link: `https://bitcoin-weekly-sentiment.web.app/`,
+          github_link: `https://github.com/klabelkholosh/bitcoin-weekly-sentimenter`,
         },
         {
           page_title: '6clocks',
@@ -44,11 +46,13 @@ export const BOOK_TEXT = [
           page_title: 'GreenPay',
           desc: `Here's a Gatsby/GraphQL/Contentful single-page site I did for a payment gateway company.`,
           link: `https://greenpay-gatsby-frontend.vercel.app/`,
+          github_link: `https://github.com/klabelkholosh/greenpay-gatsby-frontend`,
         },
         {
           page_title: 'This site..',
           desc: `There's the site you're on! It should be both full-page and mobile friendly, it's mostly React and Adobe Illustrator.`,
           link: null,
+          github_link: `https://github.com/klabelkholosh/ben-dunlop-website`,
         },
         {
           page_title: 'Printellect',
