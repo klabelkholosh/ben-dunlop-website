@@ -26,6 +26,13 @@ export const BOOK_TEXT = [
       title: `PORTFOLIO`,
       pages: [
         {
+          page_title: 'VetIQ',
+          desc: 'A ChatGPT-powered vetinarian app that diagnoses your pet! Uses React, lots of SASS anims and Server-Sent Events.',
+          link: `https://vetiq-five.vercel.app/`,
+          github_link: `https://github.com/klabelkholosh/vetiq`,
+        },
+
+        {
           page_title: 'NFT VIZ',
           desc: 'A React-based image gallery, that loads NFTs from an Ethereum address.',
           link: `https://nft-list-seven.vercel.app/`,
