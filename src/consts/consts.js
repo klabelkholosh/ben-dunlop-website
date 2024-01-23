@@ -13,10 +13,10 @@ export const BOOK_TEXT = [
     type: 'basic',
     text: [
       `ABOUT ME`,
-      `My name is Ben Dunlop, and I'm hoping to get into front end.`,
-      `I like React, JS and SVGs.`,
-      `Node.js is pretty cool too.`,
-      `My previous experience is mostly PHP/PostgreSQL.`,
+      `My name is Ben Dunlop, and I'm a front end developer / UI person.`,
+      `I like React, JS, SVGs, icon design, and getting more into animations at the moment.`,
+      `I do some back-end as well (Node.js, APIs, SQL admin, Linux & SCO/Unix admin).`,
+      `My previous experience is PHP/PostgreSQL (and niche print-industry ERP software).`,
     ],
   },
   {
