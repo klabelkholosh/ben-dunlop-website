@@ -5,7 +5,7 @@ export const BOOK_TEXT = [
     text: [
       `BDESIGN`,
       `Hi! My name is Ben.`,
-      `Feel free to check out a book on the shelf.`,
+      `Feel freez to check out a book on the shelf.`,
     ],
   },
   {
@@ -14,7 +14,7 @@ export const BOOK_TEXT = [
     text: [
       `ABOUT ME`,
       `My name is Ben Dunlop, and I'm a front end developer / UI person.`,
-      `I like React, JS, SVGs, icon design, and getting more into animations at the moment.`,
+      `I like React, JS, SVGs, icon design, and getting more into animations at the moment!`,
       `I do some back-end as well (Node.js, APIs, SQL admin, Linux & SCO/Unix admin).`,
       `My previous experience is PHP/PostgreSQL (and niche print-industry ERP software).`,
     ],

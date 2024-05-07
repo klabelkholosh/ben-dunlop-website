@@ -17,18 +17,27 @@ export default function PortfolioBook({ bookBody }) {
     }
   };
 
-  const movePage = (e, page) => {
+  const movePage = (e, page, pageLimit) => {
     let eT = e.target;
 
-    if (eT.className.substring(0, 4) === 'page') {
-      if (page === currentPage) {
-        setCurrentPage(() => (currentPage += 2));
-        toggleClass(eT, 'left-side');
-        toggleClass(eT.nextElementSibling, 'left-side');
-      } else if ((page = currentPage - 1)) {
-        setCurrentPage(() => (currentPage -= 2));
-        toggleClass(eT, 'left-side');
-        toggleClass(eT.previousElementSibling, 'left-side');
+    if (page < pageLimit || !pageLimit) {
+      /*
+      // TODO
+      // maybe figure out if we're clicking left or right, if so, do one of two things
+      console.log('pageLimit:', pageLimit);
+      console.log('sentPage (page):', page);
+      console.log('currentPage pre:', currentPage);
+      */
+      if (eT.className.substring(0, 5) === 'page ') {
+        if (page === currentPage) {
+          setCurrentPage(() => (currentPage += 2));
+          toggleClass(eT, 'left-side');
+          toggleClass(eT.nextElementSibling, 'left-side');
+        } else if ((page = currentPage - 1)) {
+          setCurrentPage(() => (currentPage -= 2));
+          toggleClass(eT, 'left-side');
+          toggleClass(eT.previousElementSibling, 'left-side');
+        }
       }
     }
   };
@@ -51,11 +60,10 @@ export default function PortfolioBook({ bookBody }) {
         ></span>
 
         {bookBody.pages.map((el, idx) => {
-          console.log('github_icon:', github_icon);
           return (
             <span
               className="page text-page"
-              onClick={(e) => movePage(e, idx + 3)}
+              onClick={(e) => movePage(e, idx + 3, bookBody.pages.length + 1)}
               key={`pfb-sp-${idx}`}
             >
               <h1>{el.page_title}</h1>
