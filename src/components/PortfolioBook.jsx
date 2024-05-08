@@ -63,9 +63,7 @@ export default function PortfolioBook({ bookBody }) {
               onClick={(e) => movePage(e, idx + 3, numPages)}
               key={`pfb-sp-${idx}`}
             >
-              <h1>
-                {idx + 3}. {el.page_title}
-              </h1>
+              <h1>{el.page_title}</h1>
               <p>{el.desc}</p>
               <p className="page-links">
                 {el.link && (
@@ -91,7 +89,6 @@ export default function PortfolioBook({ bookBody }) {
             </span>
           );
         })}
-
         {rows}
       </span>
     </>

@@ -382,12 +382,36 @@ a {
 
     @if $i > 2 {
       @if $i % 20 < 10 {
-        background: rgb(254, 198, 1);
+        //background: rgb(254, 198, 1);
       } @else {
-        background: rgb(234, 115, 23);
+        //background: rgb(234, 115, 23);
       }
     } @else {
-      background: #3da5d9;
+      background: #ffaf1b;
+    }
+  }
+
+  // left hand 'spine' shadow
+  .page:nth-child(#{$i})::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background-color: #e89e16; /* You can change this to any color you like */
+  }
+
+  // top page 'grey thingie' shadow
+  .page:nth-child(#{$i})::after {
+    @if $i > 2 {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #c5c5c5; /* You can change this to any color you like */
     }
   }
 
