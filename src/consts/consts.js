@@ -5,7 +5,7 @@ export const BOOK_TEXT = [
     text: [
       `BDESIGN`,
       `Hi! My name is Ben.`,
-      `Feel freez to check out a book on the shelf.`,
+      `Feel free to check out a book on the shelf.`,
     ],
   },
   {

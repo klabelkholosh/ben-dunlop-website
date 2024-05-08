@@ -5,10 +5,10 @@ import web_icon from '../images/web_link.svg';
 /* this component is the animated flipbook that holds the porfolio 'pages' */
 export default function PortfolioBook({ bookBody }) {
   let [currentPage, setCurrentPage] = React.useState(1);
+  let numPages = bookBody.pages.length + 2; // adding 2 pages for the front cover + inner left cover
 
   const toggleClass = (e, toggleClassName) => {
     if (e.className) {
-      console.log(e.className);
       if (e.className.includes(toggleClassName)) {
         e.className = e.className.replace(' ' + toggleClassName, '');
       } else {
@@ -20,20 +20,14 @@ export default function PortfolioBook({ bookBody }) {
   const movePage = (e, page, pageLimit) => {
     let eT = e.target;
 
-    if (page < pageLimit || !pageLimit) {
-      /*
-      // TODO
-      // maybe figure out if we're clicking left or right, if so, do one of two things
-      console.log('pageLimit:', pageLimit);
-      console.log('sentPage (page):', page);
-      console.log('currentPage pre:', currentPage);
-      */
+    // only allow clicks up until the last page!
+    if (page < pageLimit) {
       if (eT.className.substring(0, 5) === 'page ') {
         if (page === currentPage) {
           setCurrentPage(() => (currentPage += 2));
           toggleClass(eT, 'left-side');
           toggleClass(eT.nextElementSibling, 'left-side');
-        } else if ((page = currentPage - 1)) {
+        } else if (page === currentPage - 1) {
           setCurrentPage(() => (currentPage -= 2));
           toggleClass(eT, 'left-side');
           toggleClass(eT.previousElementSibling, 'left-side');
@@ -50,23 +44,28 @@ export default function PortfolioBook({ bookBody }) {
   return (
     <>
       <span className="book">
-        <span className="page cover-front" onClick={(e) => movePage(e, 1)}>
+        <span
+          className="page cover-front"
+          onClick={(e) => movePage(e, 1, numPages)}
+        >
           <h1>{bookBody.title}</h1>
         </span>
 
         <span
           className="page cover-front"
-          onClick={(e) => movePage(e, 2)}
+          onClick={(e) => movePage(e, 2, numPages)}
         ></span>
 
         {bookBody.pages.map((el, idx) => {
           return (
             <span
               className="page text-page"
-              onClick={(e) => movePage(e, idx + 3, bookBody.pages.length + 1)}
+              onClick={(e) => movePage(e, idx + 3, numPages)}
               key={`pfb-sp-${idx}`}
             >
-              <h1>{el.page_title}</h1>
+              <h1>
+                {idx + 3}. {el.page_title}
+              </h1>
               <p>{el.desc}</p>
               <p className="page-links">
                 {el.link && (
