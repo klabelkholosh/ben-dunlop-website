@@ -238,6 +238,7 @@ a {
   position: absolute;
   top: 10px;
   left: 30px;
+  width: 40%;
   /* transform: translate(-50%, -50%); */
   font-size: 20px;
   margin: 0px 20px 20px 20px;
@@ -256,7 +257,6 @@ a {
   -ms-transform: skew(0deg, -30deg);
   transform: skew(0deg, -30deg);
   text-shadow: 0 0 3px white;
-
   z-index: 50;
 }
 
@@ -265,6 +265,7 @@ a {
   .textArea {
     position: relative;
     text-align: center;
+    width: 90%;
     top: 0px;
     left: 0px;
     margin: 0px 20px 20px 20px;
@@ -380,13 +381,7 @@ a {
       transform: translatez(-1px * $i) scalex(-1) translatex(100%);
     }
 
-    @if $i > 2 {
-      @if $i % 20 < 10 {
-        //background: rgb(254, 198, 1);
-      } @else {
-        //background: rgb(234, 115, 23);
-      }
-    } @else {
+    @if $i <= 2 {
       background: #ffaf1b;
     }
   }
@@ -415,6 +410,7 @@ a {
     }
   }
 
+  // flip left hand side page to the left, rotate, etc.
   .left-side:nth-child(#{$i}) {
     @if $i % 2 == 1 {
       transform: translatez(1px * $i) rotatey(-180deg);
