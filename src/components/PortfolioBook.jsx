@@ -1,139 +1,101 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import github_icon from '../images/github-mark.svg';
 import web_icon from '../images/web_link.svg';
 
-/* this component is the animated flipbook that holds the porfolio 'pages' */
 export default function PortfolioBook({ bookBody }) {
-  let [currentPage, setCurrentPage] = React.useState(1);
-  let numPages = bookBody.pages.length + 2; // adding 2 pages for the front cover + inner left cover
-  // let [extraClasses, setExtraClasses] = React.useState();
+  const [currentPage, setCurrentPage] = useState(1);
+  const numPages = bookBody.pages.length + 2; // front + inner left
+  const bookRef = useRef(null);
+  const pageRefs = useRef([]);
 
+  // Handle arrow keys
   useEffect(() => {
+    // Reset all pages
+    pageRefs.current.forEach((el) => el?.classList.remove('left-side'));
+
+    // Mark all flipped pages
+    for (let i = 0; i < currentPage - 1; i++) {
+      pageRefs.current[i]?.classList.add('left-side');
+    }
+
     const handleKeyPress = (event) => {
-      if (event.keyCode === 37) {
-        // left arrow press
-        handleLeftArrowPress();
-      } else if (event.keyCode === 39) {
-        // right arrow press
-        handleRightArrowPress();
+      if (event.key === 'ArrowLeft') {
+        flipPage('left');
+      } else if (event.key === 'ArrowRight') {
+        flipPage('right');
       }
-    };
-
-    const handleLeftArrowPress = () => {
-      console.log('left!');
-    };
-
-    const handleRightArrowPress = () => {
-      console.log('right!');
     };
 
     window.addEventListener('keydown', handleKeyPress);
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress);
-    };
-  }, []);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [currentPage]);
 
-  const toggleClass = (e, toggleClassName) => {
-    if (e.className) {
-      if (e.className.includes(toggleClassName)) {
-        e.className = e.className.replace(' ' + toggleClassName, '');
-      } else {
-        e.className += ' ' + toggleClassName;
-      }
+  const flipPage = (direction) => {
+    if (direction === 'right' && currentPage < numPages - 1) {
+      setCurrentPage((prev) => prev + 2);
+    } else if (direction === 'left' && currentPage > 1) {
+      setCurrentPage((prev) => prev - 2);
     }
   };
-
-  // handle page/arrow clicks to move pages of the book
-  const movePage = (e, page, pageLimit) => {
-    let eT = e.target;
-
-    // only allow clicks up until the last page!
-    if (page < pageLimit) {
-      if (eT.className.substring(0, 5) === 'page ') {
-        // clicked the right-hand side page
-        if (page === currentPage) {
-          setCurrentPage(() => (currentPage += 2));
-          toggleClass(eT, 'left-side');
-          toggleClass(eT.nextElementSibling, 'left-side');
-          // clicked the left-hand side page
-        } else if (page === currentPage - 1) {
-          setCurrentPage(() => (currentPage -= 2));
-          toggleClass(eT, 'left-side');
-          toggleClass(eT.previousElementSibling, 'left-side');
-        }
-      }
-    }
+  // Attach click handlers that use same flip logic
+  const handlePageClick = (pageIndex) => {
+    if (pageIndex === currentPage) flipPage('right');
+    else if (pageIndex === currentPage - 1) flipPage('left');
   };
 
-  const movePage2 = (page, pageLimit) => {
-    if (page < pageLimit) {
-      // clicked the right-hand side page
-      if (page === currentPage) {
-        setCurrentPage(() => (currentPage += 2));
-        // clicked the left-hand side page
-      } else if (page === currentPage - 1) {
-        setCurrentPage(() => (currentPage -= 2));
-      }
-    }
-  };
-
-  const rows = [];
-  for (let i = 0; i < 40; i++) {
-    rows.push(<span className="page" key={`pfb-page-${i}`}></span>);
-  }
+  // Create empty filler pages for depth effect
+  const fillerPages = Array.from({ length: 40 }, (_, i) => (
+    <span
+      className="page"
+      key={`pfb-filler-${i}`}
+      ref={(el) => (pageRefs.current[numPages + i] = el)}
+    />
+  ));
 
   return (
-    <>
-      <span className="book">
-        <span
-          className="page cover-front"
-          onClick={(e) => movePage(e, 1, numPages)}
-          key={`pfb-sp-1`}
-        >
-          <h1>{bookBody.title}</h1>
-        </span>
-
-        <span
-          className="page cover-front"
-          onClick={(e) => movePage(e, 2, numPages)}
-          key={`pfb-sp-2`}
-        ></span>
-
-        {bookBody.pages.map((el, idx) => {
-          return (
-            <span
-              className="page text-page"
-              onClick={(e) => movePage(e, idx + 3, numPages)}
-              key={`pfb-sp-${idx + 3}`}
-            >
-              <h1>{el.page_title}</h1>
-              <p>{el.desc}</p>
-              <p className="page-links">
-                {el.link && (
-                  <p>
-                    <a href={el.link} target="_blank" rel="noreferrer">
-                      <img src={web_icon} className="github_link" alt="Demo" />
-                    </a>
-                  </p>
-                )}
-
-                {el.github_link && (
-                  <p>
-                    <a href={el.github_link} target="_blank" rel="noreferrer">
-                      <img
-                        src={github_icon}
-                        className="github_link"
-                        alt="GitHub"
-                      />
-                    </a>
-                  </p>
-                )}
-              </p>
-            </span>
-          );
-        })}
-        {rows}
+    <span className="book" ref={bookRef} tabIndex={0}>
+      {/* Front cover */}
+      <span
+        className="page cover-front"
+        onClick={() => handlePageClick(1)}
+        ref={(el) => (pageRefs.current[0] = el)}
+      >
+        <h1>{bookBody.title}</h1>
       </span>
-    </>
+
+      {/* Inner cover */}
+      <span
+        className="page cover-front"
+        onClick={() => handlePageClick(2)}
+        ref={(el) => (pageRefs.current[1] = el)}
+      ></span>
+
+      {/* Content pages */}
+      {bookBody.pages.map((el, idx) => (
+        <span
+          className="page text-page"
+          key={`pfb-page-${idx}`}
+          onClick={() => handlePageClick(idx + 3)}
+          ref={(el) => (pageRefs.current[idx + 2] = el)}
+        >
+          <h1>{el.page_title}</h1>
+          <p>{el.desc}</p>
+          <p className="page-links">
+            {el.link && (
+              <a href={el.link} target="_blank" rel="noreferrer">
+                <img src={web_icon} className="github_link" alt="Demo" />
+              </a>
+            )}
+            {el.github_link && (
+              <a href={el.github_link} target="_blank" rel="noreferrer">
+                <img src={github_icon} className="github_link" alt="GitHub" />
+              </a>
+            )}
+          </p>
+        </span>
+      ))}
+
+      {fillerPages}
+    </span>
   );
 }
