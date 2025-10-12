@@ -318,6 +318,33 @@ a {
   transform: translate(-50%, -50%);
 }
 
+/* Mobile adjustment */
+@media (max-width: 768px) {
+  %absolute-center {
+    left: 50vw;
+    top: 10vh;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Mobile adjustment */
+@media (max-width: 437px) {
+  %absolute-center {
+    left: 20vw;
+    top: 10vh;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Mobile adjustment */
+@media (max-width: 330px) {
+  %absolute-center {
+    left: 05vw;
+    top: 10vh;
+    transform: translate(-50%, -50%);
+  }
+}
+
 .book {
   @extend %absolute-center;
   width: $book-size * $book-w-ratio * 2;
