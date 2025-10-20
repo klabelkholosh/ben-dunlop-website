@@ -47,7 +47,7 @@ export const BOOK_TEXT = [
         {
           page_title: '6clocks',
           desc: 'This is a Web3-enabled NFT site I did, as well as the actual NFT art/design etc. and the Solidity Ethereum smart contract.',
-          link: `https://www.6clocks.wtf/`,
+          link: `https://6clocksite-qqwu67eq3-klabelkholosh.vercel.app/`,
         },
         {
           page_title: 'GreenPay',
