@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import github_icon from '../images/github-mark.svg';
 import web_icon from '../images/web_link.svg';
 
@@ -7,6 +7,17 @@ export default function PortfolioBook({ bookBody }) {
   const numPages = bookBody.pages.length + 2; // front + inner left
   const bookRef = useRef(null);
   const pageRefs = useRef([]);
+
+  const flipPage = useCallback(
+    (direction) => {
+      if (direction === 'right' && currentPage < numPages - 1) {
+        setCurrentPage((prev) => prev + 2);
+      } else if (direction === 'left' && currentPage > 1) {
+        setCurrentPage((prev) => prev - 2);
+      }
+    },
+    [currentPage, numPages]
+  );
 
   // Handle arrow keys
   useEffect(() => {
@@ -28,15 +39,8 @@ export default function PortfolioBook({ bookBody }) {
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [currentPage]);
+  }, [currentPage, flipPage]);
 
-  const flipPage = (direction) => {
-    if (direction === 'right' && currentPage < numPages - 1) {
-      setCurrentPage((prev) => prev + 2);
-    } else if (direction === 'left' && currentPage > 1) {
-      setCurrentPage((prev) => prev - 2);
-    }
-  };
   // Attach click handlers that use same flip logic
   const handlePageClick = (pageIndex) => {
     if (pageIndex === currentPage) flipPage('right');
