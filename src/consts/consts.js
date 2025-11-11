@@ -26,6 +26,13 @@ export const BOOK_TEXT = [
       title: `PORTFOLIO`,
       pages: [
         {
+          page_title: 'JAN',
+          desc: 'A brochure-type site done for an anti-semitism non-profit, using Next.js / Motion.',
+          link: `https://jan-site-i6yn.vercel.app/`,
+          //github_link: `https://github.com/klabelkholosh/vetiq`,
+        },
+
+        {
           page_title: 'VetIQ',
           desc: 'A ChatGPT-powered veterinarian app that diagnoses your pet! Uses React, lots of SASS anims and Server-Sent Events.',
           link: `https://vetiq-five.vercel.app/`,
