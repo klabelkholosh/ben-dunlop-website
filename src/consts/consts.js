@@ -28,7 +28,7 @@ export const BOOK_TEXT = [
         {
           page_title: 'JAN',
           desc: 'A brochure-type site done for an anti-semitism non-profit, using Next.js / Motion.',
-          link: `https://jan-site-i6yn.vercel.app/`,
+          link: `https://justiceaction.co.za/?bypass=janpreview2024`,
           //github_link: `https://github.com/klabelkholosh/vetiq`,
         },
 
