@@ -25,6 +25,13 @@ export const BOOK_TEXT = [
     text: {
       title: `PORTFOLIO`,
       pages: [
+         {
+          page_title: 'Sue Mackintosh - Design Portfolio',
+          desc: 'A design portfolio for Sue Mackintosh, graphic design consultant, using Next.js and snappy Motion slides.',
+          link: `https://sue-mackintosh-portfolio.vercel.app/`,
+          //github_link: `https://github.com/klabelkholosh/vetiq`,
+        },
+
         {
           page_title: 'JAN',
           desc: 'A brochure-type site done for an anti-semitism non-profit, using Next.js / Motion.',
